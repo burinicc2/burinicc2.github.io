@@ -1,180 +1,2388 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+<!doctype html>
+
+
+
   
 
+
+<html class="theme-next pisces use-motion" lang="zh-hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="极客, 军人,生活,学习,运动" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="仁爱兼同，疏者为戚">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Debug Genie">
+<meta property="og:url" content="http://burinicc2.github.io/index.html">
+<meta property="og:site_name" content="Debug Genie">
+<meta property="og:description" content="仁爱兼同，疏者为戚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Debug Genie">
+<meta name="twitter:description" content="仁爱兼同，疏者为戚">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://burinicc2.github.io/"/>
+
+
+
+
+
+  <title> Debug Genie </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Debug Genie</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/24/hello-world/" class="article-date">
-  <time datetime="2016-12-24T09:27:55.502Z" itemprop="datePublished">2016-12-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/menu/search.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
 
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/12/24/hello-world/" data-id="cix317fys0000m0v9otggx9eq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
+    </ul>
   
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/12/24/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+		  
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/22/photoshop/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/22/photoshop/" itemprop="url">
+                  Photoshop
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-22T17:02:47+08:00">
+                2016-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/22/photoshop/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/photoshop/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/images/mdns1.png" width="600" height="600">
+<img src="/images/mdns2.png" width="600" height="600">
+<img src="/images/mdns3.png" width="600" height="600">
+<img src="/images/mdns4.png" width="600" height="600">
+<img src="/images/mdns5.png" width="600" height="600">
+<img src="/images/mdns6.png" width="600" height="600">
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-<script src="/js/script.js"></script>
+    
+      
 
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/17/电商那点事/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/17/电商那点事/" itemprop="url">
+                  电商那点事
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-17T16:27:06+08:00">
+                2016-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/17/电商那点事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/17/电商那点事/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="商品列表页"><a href="#商品列表页" class="headerlink" title="商品列表页"></a>商品列表页</h1><p>除了正常的业务逻辑开发，需要进行一些优化 lucene和 Solr、页面缓存（OScache）、分布式缓存、高并发</p>
+<h1 id="商品详情页（单品页）"><a href="#商品详情页（单品页）" class="headerlink" title="商品详情页（单品页）"></a>商品详情页（单品页）</h1><p>页面静态化（freemarker）</p>
+<h1 id="图片从一台服务器上传到另一台服务器"><a href="#图片从一台服务器上传到另一台服务器" class="headerlink" title="图片从一台服务器上传到另一台服务器"></a>图片从一台服务器上传到另一台服务器</h1><p>图片异步提交使用jquery的form插件，使用方式<br>var options={<br>  url:’’,<br>  dataType:”json”,<br>  type:”post”,<br>  success:funtion(data){<br>    }<br>};<br>$(“#imageForm”).ajaxSubmit(options);<br>搭建一个图片服务器<br>使用jersey（ws框架）发送此图片到图片服务器，基于put请求</p>
+<h1 id="fck的使用"><a href="#fck的使用" class="headerlink" title="fck的使用"></a>fck的使用</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/12/activiti工作流框架/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/12/activiti工作流框架/" itemprop="url">
+                  activiti工作流框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T16:25:28+08:00">
+                2016-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/12/activiti工作流框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/activiti工作流框架/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>工作流：<br>用计算机技术实现业务过程的自动化，根据我们预先定义的规则解决多个参与者协同完成业务流程的技术。<br>activiti目录结构<br>bin下没有文件，database下有三个子文件夹create、drop、upgrade，里面存放不同的是脚本文件。其中upgrade是activiti由低版本升级高版本所对应的sql脚本。docs里面存放的是api等文件。<br>activiti工作流5.13<br>是依赖数据库（23张）来支持，使用mybatis操作数据库。他的前身是JBPM使用hibernate来操作数据库。<br>BPMN2.0<br>我们用来定义流程的文件名后缀。<br>使用工作流第一步：<br>根据create下的sql脚本创建数据库表（建议）、还可以使用api建表<br>所有的表都是由act开头，第二部分表示表的用途标识，其用途也和对应的API相同.<br>re<em>*: ‘re’代表repository，包含流程定义和流程静态资源（图片，规则等）<br>ru</em><em>:<br>‘runtime’,包含流程实例、任务、变量、异步任务等运行时的数据。Aciviti只在流程实例执行过程时保存这些数据，当流程结束后就会删除这些数据。<br>id_</em>:<br>‘identity’,包含用户身份信息，用户和组等。<br>hi<em>*:<br>‘history’,包含历史数据，比如历史流程实例、变量、任务。<br>ge</em>*:<br>‘generation’:通用数据，用在不同的场景下。</p>
+<h1 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h1><p>1、设计流程定义BPMN2<br>2、部署流程定义，保存到数据库<br>getRepositoryService<br>两种方式：加载单个流程定义文件、加载压缩的zip流程定义文件<br>3、创建流程实例，<br>getRuntimeService<br>4、查看个人任务、办理个人任务<br>getTaskService<br>5、设置流程变量（4种方式）<br>开启流程时设置流程变量<br>startProcessInstanceByKey(“pylc”, variables);<br>办理任务时设置流程变量<br>processEngine.getTaskService().complete(taskid, variables);<br>RuntimeService的set方法<br>processEngine.getRuntimeService().setVariables(executionid, variables);<br>TaskService的set方法<br>processEngine.getTaskService().setVariables(taskid, variables);<br>注意：设置自定义对象，应实现Serializable接口<br>6、获取流程变量（3种方式）<br>RuntimeService的get方法<br>TaskService的get方法<br>使用框架提供的表单式获取，例如${activeUser}</p>
+<h1 id="组任务"><a href="#组任务" class="headerlink" title="组任务"></a>组任务</h1><p>多个参与者都可以构成一个组，这个组对应的是角色，组里的每个成员都可以拾取组任务，变成个人任务。</p>
+<h1 id="业务主键"><a href="#业务主键" class="headerlink" title="业务主键"></a>业务主键</h1><p>businesskey在启动流程时设置，通常是业务表的主键，当在办理任务时，可以通过业务主键来关联业务表，获取业务信息。</p>
+<h1 id="排他网关"><a href="#排他网关" class="headerlink" title="排他网关"></a>排他网关</h1><p>流程走到某一步时，出现分支，通过我们设置的流程变量，在流程定义中在每个分支上的设置条件来判断流程该往哪一步执行，只能执行其中一条分支。</p>
+<h1 id="删除历史流程实例"><a href="#删除历史流程实例" class="headerlink" title="删除历史流程实例"></a>删除历史流程实例</h1><p>当一个流程结束后，我们如果想让这个流程再重新启动一次，就要删除该流程的历史流程实例。根据processInstanceId通过historyservice的deleteProcessInstance方法删除。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/09/权限管理/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/09/权限管理/" itemprop="url">
+                  权限管理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T17:30:43+08:00">
+                2016-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/09/权限管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/权限管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、权限概述（认证、授权）<br>2、权限控制方式(URL拦截权限控制、方法注释权限控制)<br>3、权限数据模型（用户表、角色表、权限表、用户角色关系表、角色权限关系表）<br>4、shiro框架</p>
+<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>每个系统都会提供很多功能，也有很多不同的类型的用户，需要对这些类型的用户分配不同的功能。<br>认证：系统识别用户身份的功能，通常是用户名和密码的方式认证，也有指纹、ukey等认证方式。<br>授权：赋予用户访问某一功能的权利。</p>
+<h2 id="权限控制方式"><a href="#权限控制方式" class="headerlink" title="权限控制方式"></a>权限控制方式</h2><p>不论用户是点击菜单还是直接在客户端输入http地址，都是发出http请求。<br>第一类：可以通过过滤器或者拦截器对http请求进行校验，如果该用户有权限访问，则放行；如果没有，则不放行。这是基于url拦截的方式进行权限控制。<br>第二类：当在action方法加上注解后，用户访问action为当前action的代理对象，当检验权限通过后，通过反射调用目标权限的方法；这是基于代理方式进行权限控制。</p>
+<h2 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h2><p>例子：登录淘宝后不用再登录天猫<br>CAS<br>application code 开发人员写的应用程序代码<br>subject 当前用户（广义）<br>SecurityManager 安全管理器shiro框架的核心类<br>realm 类似于Dao，负责访问安全数据（用户数据、角色数据、权限数据)</p>
+<h1 id="shiro使用"><a href="#shiro使用" class="headerlink" title="shiro使用"></a>shiro使用</h1><p>第一步：导入jar包<br>第二步：在web.xml配置spring整合shrio的过滤器<br>第三步：在spring文件中配置一个工厂bean为了创建shiro框架用到的过滤器<br>第四步：注册安全管理器，为安全管理器注入realm<br>第五步：注册realm</p>
+<h2 id="shiro提供的权限控制方式："><a href="#shiro提供的权限控制方式：" class="headerlink" title="shiro提供的权限控制方式："></a>shiro提供的权限控制方式：</h2><p>URL拦截方式、方法注释、页面标签<br>方法注解只能强制使用cglib动态代理，因为基于action接口的jdk动态代理对我们意义不大。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/08/apache-poi-使用中文说明书/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/08/apache-poi-使用中文说明书/" itemprop="url">
+                  apache poi 使用中文说明书
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T10:55:43+08:00">
+                2016-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/08/apache-poi-使用中文说明书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/apache-poi-使用中文说明书/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>HSSF is the POI Project’s pure Java implementation of the Excel ‘97(-2007) file format. XSSF is the POI Project’s pure Java implementation of the Excel 2007 OOXML (.xlsx) file format.</p>
+<p>HSSF and XSSF provides ways to read spreadsheets create, modify, read and write XLS spreadsheets. They provide:</p>
+<pre><code>low level structures for those with special needs
+an eventmodel api for efficient read-only access
+a full usermodel api for creating, reading and modifying XLS files
+</code></pre><p>XSSF导出 excel<br>1.导入jar包</p>
+<p>2.拷贝工具类ExcelExportSXXSSF</p>
+<p>XSSF操作03以上版本（07版本）excel，扩展名.xlsx，工作表行数没有限制<br>3.配置虚拟目录<br>在host标签中配置如下：</p>
+<p><Context path="/vir/" docBase="d:/upload/" reloadable="true" /><br>这样在浏览上输入：<br><a href="http://ip地址：端口号/vir/">http://ip地址：端口号/vir/</a><br>就可以访问d:/upload/目录下的文件了！servlet中可以使用如下代码得到webpath<br>/**            导出文件存放物理路径</p>
+<pre><code> * @param fileWebPath
+ *            导出文件web下载路径
+ * @param filePrefix
+ *            导出文件名的前缀          
+ * @param flushRows
+ *            存放在内存的数据量
+ * @param fieldNames
+ *            导出文件列标题
+ * @param fieldCodes
+ *               导出数据对象的字段名称     
+ * @param flushRows*/
+//导出文件存放的路径，并且是虚拟目录指向的路径
+String filePath = &quot;d:/upload/&quot;;
+//导出文件的前缀
+String filePrefix=&quot;studentinfo&quot;;
+//-1表示关闭自动刷新，手动控制写磁盘的时机，其它数据表示多少数据在内存保存，超过的则写入磁盘
+int flushRows=100;
+
+//定义导出数据的title
+List&lt;String&gt; fieldNames=new ArrayList&lt;String&gt;();
+fieldNames.add(&quot;性别&quot;);
+fieldNames.add(&quot;年龄&quot;);
+fieldNames.add(&quot;姓名&quot;);
+fieldNames.add(&quot;爱好&quot;);
+
+//告诉导出类数据list中对象的属性，让ExcelExportSXXSSF通过反射获取对象的值
+List&lt;String&gt; fieldCodes=new ArrayList&lt;String&gt;();
+fieldCodes.add(&quot;gender&quot;);//药品流水号
+fieldCodes.add(&quot;age&quot;);//通用名
+fieldCodes.add(&quot;name&quot;);//价格
+fieldCodes.add(&quot;hobbies&quot;);
+
+
+
+//注意：fieldCodes和fieldNames个数必须相同且属性和title顺序一一对应，这样title和内容才一一对应
+
+
+//开始导出，执行一些workbook及sheet等对象的初始创建
+ExcelExportSXXSSF excelExportSXXSSF = ExcelExportSXXSSF.start(filePath, &quot;/vir&quot;, filePrefix, fieldNames, fieldCodes, flushRows);
+
+//准备导出的数据，将数据存入list，且list中对象的字段名称必须是刚才传入ExcelExportSXXSSF的名称
+List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+
+list.add(new Student(&quot;男&quot;, 23, &quot;张三&quot;, &quot;乒乓球,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 24, &quot;李四&quot;, &quot;篮球,羽毛球&quot;));
+list.add(new Student(&quot;女&quot;, 25, &quot;小红&quot;, &quot;高尔夫,羽毛球&quot;));
+list.add(new Student(&quot;男&quot;, 23, &quot;小刘&quot;, &quot;乒乓球,羽毛球&quot;));
+
+//执行导出
+excelExportSXXSSF.writeDatasByObject(list);
+//输出文件，返回下载文件的http地址
+String webpath = excelExportSXXSSF.exportFile();
+
+System.out.println(webpath);
+</code></pre>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/08/apache-poi-使用中文说明书/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/04/二期改造项目笔记2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/04/二期改造项目笔记2/" itemprop="url">
+                  二期改造项目2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T14:03:05+08:00">
+                2016-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/04/二期改造项目笔记2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/二期改造项目笔记2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="解决windows窗口bug"><a href="#解决windows窗口bug" class="headerlink" title="解决windows窗口bug"></a>解决windows窗口bug</h2><p>描述：当控件移动到窗口外就不能移动<br>解决方案：将outOfBounds.js引入到使用窗口控件的页面</p>
+<h2 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h2><p>它是通常在数据库中设计两张表一张dicttype一张dictinfo，dictinfo是dicttype的子表。</p>
+<h1 id="业务功能开发"><a href="#业务功能开发" class="headerlink" title="业务功能开发"></a>业务功能开发</h1><p>取派员维护</p>
+<h1 id="添加取派员："><a href="#添加取派员：" class="headerlink" title="添加取派员："></a>添加取派员：</h1><p>手机号校验需要扩展validatebox的校验规则</p>
+<pre>
+var regex=/^1[3|5|7|8|9][0-9]{9}$/;
+$.extend($.fn.validatebox.defaults.rules, {   
+    phonenumber: {   
+        validator: function(value, param){   
+            return regex.test(value);   
+        },   
+        message: '您的手机号输入有误！'  
+    }   
+});
+//对手机号输入框应用规则
+&ltinput class="easyui-validatebox" data-options="validType:'phonenumber'"&gt
+
+</pre>
+
+
+
+
+<h1 id="分页查询取派员："><a href="#分页查询取派员：" class="headerlink" title="分页查询取派员："></a>分页查询取派员：</h1><h2 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h2><p>//离线查询对象<br>DetachedCriteria detachedCriteria=pageBean.getDetachedCriteria();<br>//总数据量<br>//改变hibernate发出sql的形式,人为控制发出的sql,下面一句相当于发出</p>
+<pre>
+//select count(*) from table_name;
+detachedCriteria.setProjection(Projections.rowCount());
+List<Long> list=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+Long total=list.get(0);
+pageBean.setTotal(total.intValue());
+//改变hibernate发出sql的形式,重置select * from table_name;(默认)
+detachedCriteria.setProjection(null);
+//按照映射文件的映射关系将表的数据映射到对象的属性上
+detachedCriteria.setResultTransformer(DetachedCriteria.ROOT_ENTITY);
+List rows=this.getHibernateTemplate().findByCriteria(detachedCriteria,pageStart, pageSize)
+</pre>
+
+
+<h2 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h2><p>注意事项：复选框的值如果勾选会随着表单提交到action，如果不勾选不会提交。<br>JSONObject jsonObj=JSONObject.fromObject(pageBean);<br>JSONObject 将对象转换为json数据，页面只需要page和rows干掉页面不需要的数据</p>
+<p>JsonConfig jsonConfig=new JsonConfig();<br>                jsonConfig.setExcludes(new String[]{“currentPage”,”pageSize”,”detachedCriteria”,”pageStart”});<br>                JSONObject jsonObj=JSONObject.fromObject(pageBean,jsonConfig);</p>
+<h1 id="批量删除（逻辑删除）"><a href="#批量删除（逻辑删除）" class="headerlink" title="批量删除（逻辑删除）"></a>批量删除（逻辑删除）</h1><h2 id="页面："><a href="#页面：" class="headerlink" title="页面："></a>页面：</h2><p>var rows=$(“#grid”).datagrid(“getSelections”);<br>        if(rows.length==0){<br>            $.messager.alert(“提示信息”,”你没有选择任何内容！”,”warning”);<br>        }else{<br>            var idArray=new Array();<br>        for(var i=0;i&lt;rows.length;i++){<br>              idArray[i]=rows[i].id;<br>             //idArray.push(rows[i].id);<br>        }<br>        var ids=idArray.join(“,”);<br>        window.location.href=”${pageContext.request.contextPath}/staffAction_delete.action?ids=”+ids;<br>        }</p>
+<h1 id="修改取派员信息"><a href="#修改取派员信息" class="headerlink" title="修改取派员信息"></a>修改取派员信息</h1><p>在datagrid中定义一个双击行事件onDblClickRow<br>function doDblClickRow(rowIndex, rowData){<br>  //打开修改取派员窗口<br>  $(‘#editStaffWindow’).window(“open”);<br>  //rowData将数据装到form表单<br>  $(‘#editstaffForm’).form(‘load’,rowData);<br>  //alert(rowData.name);<br>  $(‘#edit’).click(<br>    function(){<br>      var v=$(‘#editstaffForm’).form(“validate”);<br>      if(v){<br>        $(‘#editstaffForm’).submit();<br>      }<br>    }<br>  );<br>}<br>更新时需要注意先从数据中查询原始数据，然后在原始数据对象上修改。不能把模型对象直接交给hibernate更新。</p>
+<h1 id="区域设置"><a href="#区域设置" class="headerlink" title="区域设置"></a>区域设置</h1><p>一键导入（使用jQuery提供的ocupload.js插件）<br>原理：在form表单中动态添加target属性，值等于动态生成的iframe的name，实现页面没有跳转的效果。<br>使用规则：<br>第一步：在jsp页面中引入插件的js文件<br>第二步：在页面中提供任意一个元素<br>input id=’btn1’ value=”上传” type=”button”<br>第三步：调用插件提供的upload方法，动态修改页面html代码<br>$(function(){<br>    $(“#btn1”).upload(<br>      {<br>        action:’xxx.action’<br>        name:’myfile’<br>      }<br>      );<br>  });</p>
+<h2 id="解析excel文件（POI的使用）"><a href="#解析excel文件（POI的使用）" class="headerlink" title="  解析excel文件（POI的使用）"></a>  解析excel文件（POI的使用）</h2><p>  对于小数据量可以用hssf在action中直接解析<br>  第一步：HSSFWorkbook<br>  第二步：Sheet<br>  第三步：Row<br>  第四步：Cell<br></pre></p>
+  <pre>
+    HSSFWorkbook workbook=new HSSFWorkbook(new FileInputStream(myfile));
+       HSSFSheet sheet=workbook.getSheetAt(0);
+
+       List<Region> list=new ArrayList<Region>();
+       for(Row row:sheet){
+         int rownum=row.getRowNum();
+         if(rownum==0){
+              continue;
+         }
+        String id=row.getCell(0).getStringCellValue();
+        String  province=row.getCell(1).getStringCellValue();
+        String  city=row.getCell(2).getStringCellValue();
+        String  district=row.getCell(3).getStringCellValue();
+        String  postcode=row.getCell(4).getStringCellValue();
+        Region region=new Region(id, province, city, district, postcode, null, null, null);
+        list.add(region);
+       }
+       regionService.insertBatch(list);
+</pre>
+
+
+
+
+
+<h2 id="使用Pinyin4J生成简码和城市编码"><a href="#使用Pinyin4J生成简码和城市编码" class="headerlink" title="使用Pinyin4J生成简码和城市编码"></a>使用Pinyin4J生成简码和城市编码</h2><p>导入一个pinyin4j工具类和jar包然后根据城市名称生成简码和城市编码。</p>
+<h1 id="添加分区"><a href="#添加分区" class="headerlink" title="添加分区"></a>添加分区</h1><p>第一步：使用combobox展示区域数据到下拉框中<br>第二步：在RegionAction中提供findALL方法，查询所有的区域数据，返回json数据,<br>为了使返回的json中含有name字段，需要在Region类中提供getName方法</p>
+<p>组合条件查询：<br>页面使用datagrid的load的方法<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/二期改造项目笔记2/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/02/messx/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/messx/" itemprop="url">
+                  Mess x
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T09:28:55+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lifestyle/" itemprop="url" rel="index">
+                    <span itemprop="name">Lifestyle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/02/messx/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/messx/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p></p><h1><br>Need A “illeia break”,and Hv a good rest tonight</h1><p></p>
+<iframe width="380" height="280" src="https://www.youtube.com/embed/qpaC4QuVKMk" frameborder="0"></iframe>
+
+<img src="/images/title.png" width="200" height="10">
+<p>//TODO</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/二期改造项目笔记/" itemprop="url">
+                  二期改造项目1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T00:00:00+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/02/二期改造项目笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/二期改造项目笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据<br>insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))<br>这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：</p>
+<pre>public static String md5(String plainText) {
+        byte[] secretBytes = null;
+        try {
+            secretBytes = MessageDigest.getInstance("md5").digest(
+                    plainText.getBytes());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("没有md5这个算法！");
+        }
+        String md5code = new BigInteger(1, secretBytes).toString(16);// 16进制数字
+        // 如果生成数字未满32位，需要前面补0
+        for (int i = 0; i < 32 - md5code.length(); i++) {
+            md5code = "0" + md5code;
+        }
+        return md5code;
+    }</pre>
+
+
+<pre><code>自定义一个登录拦截器
+-------------------
+struts只能识别默认的拦截器栈
+        &lt;interceptors&gt;
+        &lt;!-- 注册拦截器 --&gt;
+        &lt;interceptor name=&quot;bosLoginInterceptor&quot; class=&quot;com.itheima.bos.web.interceptor.BOSLoginInterceptor&quot;&gt;
+            &lt;param name=&quot;excludeMethods&quot;&gt;login&lt;/param&gt;
+        &lt;/interceptor&gt;
+        &lt;!-- 拦截器栈 --&gt;
+        &lt;interceptor-stack name=&quot;mystack&quot;&gt;
+                &lt;interceptor-ref name=&quot;bosLoginInterceptor&quot;/&gt;
+                &lt;interceptor-ref name=&quot;defaultStack&quot;/&gt;
+        &lt;/interceptor-stack&gt;
+    &lt;/interceptors&gt;
+    &lt;default-interceptor-ref name=&quot;mystack&quot;/&gt;
+</code></pre><p>页面使用多个样式用空格隔开，例如<br>class=”txt01 easyui-validatebox”</p>
+<pre>
+var v = $("#editPasswordForm").form("validate");//对应表单中的所有输入框进行校验
+if(v){//表单校验通过
+                //判断两次输入是否一致
+                var v1 = $("#txtNewPass").val();
+                var v2 = $("#txtRePass").val();
+                if(v1 == v2){
+                    //输入一致，发送ajax请求，修改当前用户的密码
+                    var url = "${pageContext.request.contextPath}/userAction_editPassword.action";
+                    $.post(url,{"password":v1},function(data){
+                        if(data == '1'){
+                            //修改密码成功
+                            $.messager.alert("提示信息","密码修改成功！","info");
+                        }else{
+                            //修改失败
+                            $.messager.alert("提示信息","密码修改失败！","warning");
+                        }
+                        //关闭修改密码的窗口
+                        $("#editPwdWindow").window("close");
+                    });
+                }else{
+                    //输入不一致，提示用户输入不一致
+                    $.messager.alert("提示信息","两次输入密码不一致！","warning");
+                }
+            }
+</pre>
+在编写dao时遇到了命名查询语句，它就是在对象映射文件domain.hbm.xml中的一个query标签
+<pre>
+&ltquery name=""&gt
+sql语句
+&lt/query&gt
+</pre>
+hibernate模板并没有提供命名语句查询，
+<pre>
+Session session = this.getSession();// 从本地线程中获得session对象
+        // 使用命名查询语句获得一个查询对象
+        Query query = session.getNamedQuery(queryName);
+        // 为HQL语句中的？赋值
+        int i = 0;
+        for (Object arg : objects) {
+            query.setParameter(i++, arg);
+        }
+        query.executeUpdate();// 执行更新
+</pre>
+在action中直接使用提示信息不太合理，改进措施把这些信息放到国际化配置文件中（message.properties)
+ActionSupport类中提供了一个读取配置文件的方法getText("配置文件中的key")在struts.xml中注册这个配置文件的位置，
+<pre>&ltconstant name="struts.custom.i18n.resources" value="message"&gt</pre>
+
+<h2 id="struts提供的错误提示标签"><a href="#struts提供的错误提示标签" class="headerlink" title="struts提供的错误提示标签"></a>struts提供的错误提示标签</h2><pre>&ltfont color="red"&gt
+&lts:actionerror/&gt
+&lt/font&gt</pre>
+
+<h1 id="jQuery-EasyUI在页面使用的规则（具体配置查看API）"><a href="#jQuery-EasyUI在页面使用的规则（具体配置查看API）" class="headerlink" title="jQuery EasyUI在页面使用的规则（具体配置查看API）"></a>jQuery EasyUI在页面使用的规则（具体配置查看API）</h1><hr>
+<p>准备工作，在jsp页面中引入easyUI相关的资源文件</p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css"/></p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/icon.css" /></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script ></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script ></p>
+<h2 id="layout页面布局"><a href="#layout页面布局" class="headerlink" title="layout页面布局"></a>layout页面布局</h2><p>这个布局容器,有五个区域:北、南、东、西和中心。 他中心地区面板是必需的（特别注意）,但是边缘地区面板是可选的。每一个边缘地区面板可以缩放的拖动其边境, 他们也可以通过点击其收缩触发.布局可以嵌套,从而用户可以建立复杂的布局,他想要的。</p>
+<p>使用规则（重要）<br>在要使用的块状元素中添加class=”easyui-layout”,使用div指定区域使用easyui提供的data-options=”region:’north’”北部区域<br>data-options=”region:’south’”南部区域<br>data-options=”region:’west’”西部区域<br>data-options=”region:’east’”东部区域<br>这时页面显示的效果并不好，要在北部区域和南部区域div加上style=”height：100px”指定高度<br>在西部和东部div加上style=”width：100px”指定高度 在div上加上title属性显示标题，自带折叠效果</p>
+<h2 id="accordion折叠面板"><a href="#accordion折叠面板" class="headerlink" title="accordion折叠面板"></a>accordion折叠面板</h2><p>使用规则（重要）<br>在区域div中加入折叠面板div添加属性class=”easyui-accordion”，添加属性data-options=”fit:true”，表示自动填充区域div，每一个子div就是一个面板，在div上添加title属性显示标题，通常放在西部区域里面。</p>
+<h2 id="tabs选项卡面板"><a href="#tabs选项卡面板" class="headerlink" title="tabs选项卡面板"></a>tabs选项卡面板</h2><p>使用规则（重要）<br>在中部区域加入选项卡面板div添加属性class=”easyui-tabs”，添加属性data-options=”fit:true”，表示自动填充区域div，在子div中，添加性data-options=”closable:true,iconCls:’icon-add’”表示这个div是可关闭的,面板的图标是添加，面板的图标可以到引入的icon.css中找到。</p>
+<h1 id="Ztree树形插件–jQuery插件"><a href="#Ztree树形插件–jQuery插件" class="headerlink" title="Ztree树形插件–jQuery插件"></a>Ztree树形插件–jQuery插件</h1><p>我已经在官网上下载ztree插件，里面包括api<br>在页面导入资源文件</p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"></script></p>
+<p><link rel="stylesheet" href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css" type="text/css"><br>使用规则（重要）<br>第一种方式：使用标准json数据构成ztree（了解)</p>
+<pre>
+&ltul id="ztree1" class="ztree"&gt&lt/ul&gt
+$(function(){
+                            //当页面加载完成后动态创建菜单
+                            var setting={};//设置标准的ztree属性
+                            //构造json数据
+                            var zNodes=[//每个json数据代表一个节点
+                                                    {
+                                                        name:'系统管理'
+                                                    },
+                                                    {
+                                                        name:'用户管理',children:[{name:'用户添加'},{name:'用户修改'}]
+                                                    },
+                                                    {
+                                                        name:'权限管理'
+                                                    }
+                                                    ];
+                                    //创建ztree
+                                $.fn.zTree.init(
+                                    $("#ztree1"),
+                                    setting,
+                                    zNodes
+                                );
+
+                        });
+</pre>
+
+<p>第二种方式：使用简单json数组数据构成ztree(推荐)<br>在实际开发中我们的节点数据一般来自于系统的业务数据,可以发送ajax请求找action要数据，然后赋给treeNodes</p>
+<pre>
+&ltul id="ztree2" class="ztree"&gt&lt/ul&gt
+$(function(){
+                                //当页面加载完成后动态创建菜单
+                                var setting = {
+                                        data: {
+                                            simpleData: {
+                                                enable: true,//启用简单数组数据
+                                                idKey: "id",
+                                                pIdKey: "pId",
+                                                rootPId: 0
+                                            }
+                                        }
+                                    };
+                                    var treeNodes = [
+                                        {"id":1, "pId":0, "name":"test1"},
+                                        {"id":11, "pId":1, "name":"test11"},
+                                        {"id":12, "pId":1, "name":"test12"},
+                                        {"id":111, "pId":11, "name":"test111"}
+                                    ];
+                                    //创建ztree
+                                    $.fn.zTree.init(
+                                        $("#ztree2"),
+                                        setting,
+                                        treeNodes
+                                    );
+                            });
+
+</pre>
+
+
+
+
+<h2 id="给ztree绑定点击事件"><a href="#给ztree绑定点击事件" class="headerlink" title="给ztree绑定点击事件"></a>给ztree绑定点击事件</h2><pre>
+<code>
+function zTreeOnClick(event, treeId, treeNode) {
+    var page=treeNode.page;
+                    if(page!=undefined){//需要打开选项卡
+                                     //判断当前选项卡是否已经打开
+
+                                    var isExists= $("#tt").tabs("exists",treeNode.name);
+
+                                 if(isExists){
+                                     $("#tt").tabs("select",treeNode.name);
+                                 }else{
+                                     $("#tt").tabs("add",
+                                                {
+                                                 title: treeNode.name,
+                                                content: '&ltiframe src="'+page+'" width="100%" frameborder="0" height="100%"&gt&lt/iframe&gt',
+                                                closable: true,
+                                             iconCls: 'icon-search'
+                                                }  
+                                            );
+                                    }
+                                 }
+};
+var setting = {
+    callback: {
+        onClick: zTreeOnClick
+    }
+};
+</code>
+</pre>
+
+
+<h1 id="jQuery-EasyUI消息提示控件"><a href="#jQuery-EasyUI消息提示控件" class="headerlink" title="jQuery EasyUI消息提示控件"></a>jQuery EasyUI消息提示控件</h1><p>默认的提示框上面的按钮显示为ok，要想显示为中文，需要引入easyui下面locale下面的<br>easyui-lang-zh_CN.js</p>
+<h2 id="alert方法-消息提示框"><a href="#alert方法-消息提示框" class="headerlink" title="alert方法,消息提示框"></a>alert方法,消息提示框</h2><p>$.messager.alert(“标题”,”内容信息”,”question/error/info/warning”);</p>
+<h2 id="show方法-页面右下角出来提示信息"><a href="#show方法-页面右下角出来提示信息" class="headerlink" title="show方法,页面右下角出来提示信息"></a>show方法,页面右下角出来提示信息</h2><pre><code>window.setTimeout(function(){
+            $.messager.show({
+                title:&apos;欢迎信息&apos;,
+                msg:&apos;欢迎张三登录系统&apos;,
+                timeout:3000,
+                showType:&apos;slide&apos;
+            });
+        }, 3000);
+</code></pre><h2 id="confirm方法-确认框-如果点击确定，r的值为true"><a href="#confirm方法-确认框-如果点击确定，r的值为true" class="headerlink" title="confirm方法,确认框,如果点击确定，r的值为true"></a>confirm方法,确认框,如果点击确定，r的值为true</h2><pre><code>$.messager.confirm(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                        alert(r);
+                    });
+</code></pre><h2 id="prompt方法，跟confirm的作用差不多"><a href="#prompt方法，跟confirm的作用差不多" class="headerlink" title="prompt方法，跟confirm的作用差不多"></a>prompt方法，跟confirm的作用差不多</h2><pre><code>$.messager.prompt(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                                    alert(r);
+                                });
+</code></pre><h2 id="progress方法，进度条"><a href="#progress方法，进度条" class="headerlink" title="progress方法，进度条"></a>progress方法，进度条</h2><p>//打开进度条<br>$.messager.progress();<br>//关闭进度条<br>$.messager.progress(‘close’);<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/02/二期改造项目笔记/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/复杂的sql/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/复杂的sql/" itemprop="url">
+                  复杂的sql
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T20:39:19+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/01/复杂的sql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/复杂的sql/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>做统计分析时，统计每个地区医院的采购金额</p>
+<pre>
+select areainfo.areaname,nvl(business.cgje,0)cgje from
+(select areaname from bss_sys_area where arealevel='2')areainfo left join(
+select sum(nvl(cgje,0))cgje,
+       parentid,
+       (select areaname from bss_sys_area where business.parentid=areaid)areaname from (
+select dq,cgje,
+       (select parentid from bss_sys_area where dq=areaid)parentid
+from (
+select useryyid,
+       (select dq from useryy where useryyid=useryy.id)dq,
+       cgje
+from (
+select useryy.id      useryyid,
+       useryy.mc      useryymc,
+       yycgd.bm       yycgdbm,
+       yycgd.id       yycgdid,
+       usergys.id     usergysid,
+       usergys.mc     usergysmc,
+       yycgdmx.ypxxid,
+       ypxx.id,
+       ypxx.bm,
+       ypxx.mc,
+       ypxx.jx,
+       ypxx.gg,
+       ypxx.zhxs,
+       ypxx.scqymc,
+       ypxx.spmc,
+
+       ypxx.jyzt,
+
+       (select info
+          from dictinfo
+         where ypxx.jyzt = dictcode
+           and typecode = '003') jyztmc,
+       (select info
+          from dictinfo
+         where typecode = '011'
+           and dictcode = yycgdmx.cgzt) cgztmc,
+       yycgdmx.cgl,
+       yycgdmx.cgje,
+       yycgdmx.rkl,
+       yycgdmx.rkje,
+       yycgdmx.thl,
+       yycgdmx.thje,
+       yycgdmx.jsl,
+       yycgdmx.jsje
+
+  from yybusiness2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx
+ where yycgdmx.yycgdid = yycgd.id
+   and yycgd.useryyid = useryy.id
+   and yycgdmx.usergysid = usergys.id
+   and yycgdmx.ypxxid = ypxx.id)business)business)business group by parentid)business
+on business.areaname=areainfo.areaname</pre>
+
+<p>   下面的sql让我对外连接和内连接以及它们使用的时机有了一个更清楚认识，表的关联需要注意的事项就是一定要保证我们主表在所关联的表只能查到一条记录，这个字段要么不是外键要么就是多个字段构成关联表的唯一约束</p>
+   <pre>select yycgdmx.*,yycgdrk.rkl,
+       yycgdrk.rkje
+        from(
+      select
+        useryy.mc useryymc,
+        yycgd.bm yycgdbm,
+        yycgdmx.yycgdid,
+        yycgdmx.ypxxid,
+        usergys.mc usergysmc,
+        yycgdmx.cgl,
+        yycgdmx.cgje,
+        ypxx.*
+        from yycgdmx2016 yycgdmx,
+             yycgd2016 yycgd,
+             useryy,
+             usergys,
+             ypxx
+             where yycgdmx.yycgdid=yycgd.id
+             and yycgd.useryyid=useryy.id
+             and yycgdmx.ypxxid=ypxx.id
+             and yycgdmx.usergysid=usergys.id
+
+      )yycgdmx
+      （注释)外连接查询入库信息表
+       left join yycgdrk2016 yycgdrk
+      on yycgdmx.yycgdid=yycgdrk.yycgdid
+      and yycgdmx.ypxxid=yycgdrk.ypxxid</pre>
+
+
+<p>总结：在数据库设计时，为了保证数据的完整性，不能把入库量、结算量、退货量、结算金额等重要的业务数据放在yycgdmx中，因为这些信息在创建明细表中根本就不存在，然而这些数据对应的字段不能为空，所以就产生了矛盾。故还应该设计另外一张表来存放这些业务信息yybusiness，考虑到表的数据量也会很大，就写了一个创建表的储存过程，由系统的定时任务来调用。yybusiness中的数据插入时机是监督单位审核后，因为有业务逻辑的判断，使用触发器来插入数据比较复杂，相比较在业务层做这个工作比较方便。当更新yybusiness中的信息的时候，这时触发器会帮助把数据放到自己业务所对应的表中，比如结算流程，对应的yyjsd表。这里使用触发器还帮着实现了数据同步，另外，这样做实际上就是数据聚合。前段时间，一个同学问我数据聚合，当时把我问的一头雾水，现在想想还觉的脸红。其实，它就是为了我们方便操作数据，这里的操作主要是查询，你想想看，数据结构中，数组为什么比链表好查。其实是一个道理。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/向maven私服中导入jar包/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/向maven私服中导入jar包/" itemprop="url">
+                  Maven
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T19:55:41+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/01/向maven私服中导入jar包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/向maven私服中导入jar包/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对于官网没有的jar包，maven向本地仓库导入jar包用如下命令<br>Java代码<br>mvn install:install-file<br>-DgroupId=包名<br>-DartifactId=项目名<br>-Dversion=版本号<br>-Dpackaging=jar<br>-Dfile=jar文件所在路径<br>以pinyin4j-2.5.0为例：<br>1、将pinyin4j-2.5.0.jar文件放在“D:\”目录下（该目录任意）<br>2、执行命令：<br>mvn install:install-file  -Dfile=D:\pinyin4j-2.5.0.jar -DgroupId=net.sourceforge.pinyin4j -DartifactId=pinyin4j -Dversion=2.5.0 -Dpackaging=jar  -DgeneratePom=true -DcreateChecksum=true<br>这样maven向本地仓库导入 pinyin4j-2.5.0.jar 包就成功了。<br>3.pom.xml文件配置：<br>Xml代码   </p>
+<pre>&ltdependency&gt
+      &ltgroupId&gtnet.sourceforge&lt/groupId&gt
+      &ltartifactId&gtpinyin4j&lt/artifactId&gt
+      &ltversion&gt2.5.0&lt/version&gt
+   &lt/dependency&gt</pre>
+
+
+<h1 id="什么是热部署"><a href="#什么是热部署" class="headerlink" title="   什么是热部署"></a>   什么是热部署</h1><p>  需求： 当程序出现新版本的时候，我们需要把新版本部署到正在运行的服务器上覆盖老版本。这种部署方式称为热部署。<br> 使用方式：<br> 第一步：配置服务器的用户名和密码<br> 第二步：启动服务器，访问根路径<br> 第三步：在pom.xml中添加服务器插件</p>
+ <pre>
+ <plugins>
+    <plugin>
+      <groupid>org.apache.tomcat.maven</groupid>
+      <artifactid>tomcat7-maven-plugin</artifactid>
+      <version>2.2</version>
+      <configuration>
+        <url>http://localhost:8081/manager/text</url>
+        <!--<path>/</path>  -->
+        <server>tomcat</server>
+        <username>tomcat</username>
+        <password>123</password>
+      </configuration>
+    </plugin>
+</plugins>
+</pre>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/mikey.png"
+               alt="burinicc" />
+          <p class="site-author-name" itemprop="name">burinicc</p>
+          <p class="site-description motion-element" itemprop="description">仁爱兼同，疏者为戚</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/burinicc/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/unknown" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+		 
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">burinicc</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"burinicc"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	
 </body>
 </html>

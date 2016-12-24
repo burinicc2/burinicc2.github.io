@@ -1,0 +1,964 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="项目," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：
+public sta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二期改造项目1">
+<meta property="og:url" content="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/index.html">
+<meta property="og:site_name" content="Debug Genie">
+<meta property="og:description" content="用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：
+public sta">
+<meta property="og:updated_time" content="2016-12-08T12:24:03.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二期改造项目1">
+<meta name="twitter:description" content="用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：
+public sta">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/"/>
+
+
+
+
+
+  <title> 二期改造项目1 | Debug Genie </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Debug Genie</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/menu/search.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Suche
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+		  
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/mikey.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                二期改造项目1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T00:00:00+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/02/二期改造项目笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/二期改造项目笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据<br>insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))<br>这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：</p>
+<pre>public static String md5(String plainText) {
+        byte[] secretBytes = null;
+        try {
+            secretBytes = MessageDigest.getInstance("md5").digest(
+                    plainText.getBytes());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("没有md5这个算法！");
+        }
+        String md5code = new BigInteger(1, secretBytes).toString(16);// 16进制数字
+        // 如果生成数字未满32位，需要前面补0
+        for (int i = 0; i < 32 - md5code.length(); i++) {
+            md5code = "0" + md5code;
+        }
+        return md5code;
+    }</pre>
+
+
+<pre><code>自定义一个登录拦截器
+-------------------
+struts只能识别默认的拦截器栈
+        &lt;interceptors&gt;
+        &lt;!-- 注册拦截器 --&gt;
+        &lt;interceptor name=&quot;bosLoginInterceptor&quot; class=&quot;com.itheima.bos.web.interceptor.BOSLoginInterceptor&quot;&gt;
+            &lt;param name=&quot;excludeMethods&quot;&gt;login&lt;/param&gt;
+        &lt;/interceptor&gt;
+        &lt;!-- 拦截器栈 --&gt;
+        &lt;interceptor-stack name=&quot;mystack&quot;&gt;
+                &lt;interceptor-ref name=&quot;bosLoginInterceptor&quot;/&gt;
+                &lt;interceptor-ref name=&quot;defaultStack&quot;/&gt;
+        &lt;/interceptor-stack&gt;
+    &lt;/interceptors&gt;
+    &lt;default-interceptor-ref name=&quot;mystack&quot;/&gt;
+</code></pre><p>页面使用多个样式用空格隔开，例如<br>class=”txt01 easyui-validatebox”</p>
+<pre>
+var v = $("#editPasswordForm").form("validate");//对应表单中的所有输入框进行校验
+if(v){//表单校验通过
+                //判断两次输入是否一致
+                var v1 = $("#txtNewPass").val();
+                var v2 = $("#txtRePass").val();
+                if(v1 == v2){
+                    //输入一致，发送ajax请求，修改当前用户的密码
+                    var url = "${pageContext.request.contextPath}/userAction_editPassword.action";
+                    $.post(url,{"password":v1},function(data){
+                        if(data == '1'){
+                            //修改密码成功
+                            $.messager.alert("提示信息","密码修改成功！","info");
+                        }else{
+                            //修改失败
+                            $.messager.alert("提示信息","密码修改失败！","warning");
+                        }
+                        //关闭修改密码的窗口
+                        $("#editPwdWindow").window("close");
+                    });
+                }else{
+                    //输入不一致，提示用户输入不一致
+                    $.messager.alert("提示信息","两次输入密码不一致！","warning");
+                }
+            }
+</pre>
+在编写dao时遇到了命名查询语句，它就是在对象映射文件domain.hbm.xml中的一个query标签
+<pre>
+&ltquery name=""&gt
+sql语句
+&lt/query&gt
+</pre>
+hibernate模板并没有提供命名语句查询，
+<pre>
+Session session = this.getSession();// 从本地线程中获得session对象
+        // 使用命名查询语句获得一个查询对象
+        Query query = session.getNamedQuery(queryName);
+        // 为HQL语句中的？赋值
+        int i = 0;
+        for (Object arg : objects) {
+            query.setParameter(i++, arg);
+        }
+        query.executeUpdate();// 执行更新
+</pre>
+在action中直接使用提示信息不太合理，改进措施把这些信息放到国际化配置文件中（message.properties)
+ActionSupport类中提供了一个读取配置文件的方法getText("配置文件中的key")在struts.xml中注册这个配置文件的位置，
+<pre>&ltconstant name="struts.custom.i18n.resources" value="message"&gt</pre>
+
+<h2 id="struts提供的错误提示标签"><a href="#struts提供的错误提示标签" class="headerlink" title="struts提供的错误提示标签"></a>struts提供的错误提示标签</h2><pre>&ltfont color="red"&gt
+&lts:actionerror/&gt
+&lt/font&gt</pre>
+
+<h1 id="jQuery-EasyUI在页面使用的规则（具体配置查看API）"><a href="#jQuery-EasyUI在页面使用的规则（具体配置查看API）" class="headerlink" title="jQuery EasyUI在页面使用的规则（具体配置查看API）"></a>jQuery EasyUI在页面使用的规则（具体配置查看API）</h1><hr>
+<p>准备工作，在jsp页面中引入easyUI相关的资源文件</p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css"></p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/icon.css"></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script></p>
+<h2 id="layout页面布局"><a href="#layout页面布局" class="headerlink" title="layout页面布局"></a>layout页面布局</h2><p>这个布局容器,有五个区域:北、南、东、西和中心。 他中心地区面板是必需的（特别注意）,但是边缘地区面板是可选的。每一个边缘地区面板可以缩放的拖动其边境, 他们也可以通过点击其收缩触发.布局可以嵌套,从而用户可以建立复杂的布局,他想要的。</p>
+<p>使用规则（重要）<br>在要使用的块状元素中添加class=”easyui-layout”,使用div指定区域使用easyui提供的data-options=”region:’north’”北部区域<br>data-options=”region:’south’”南部区域<br>data-options=”region:’west’”西部区域<br>data-options=”region:’east’”东部区域<br>这时页面显示的效果并不好，要在北部区域和南部区域div加上style=”height：100px”指定高度<br>在西部和东部div加上style=”width：100px”指定高度 在div上加上title属性显示标题，自带折叠效果</p>
+<h2 id="accordion折叠面板"><a href="#accordion折叠面板" class="headerlink" title="accordion折叠面板"></a>accordion折叠面板</h2><p>使用规则（重要）<br>在区域div中加入折叠面板div添加属性class=”easyui-accordion”，添加属性data-options=”fit:true”，表示自动填充区域div，每一个子div就是一个面板，在div上添加title属性显示标题，通常放在西部区域里面。</p>
+<h2 id="tabs选项卡面板"><a href="#tabs选项卡面板" class="headerlink" title="tabs选项卡面板"></a>tabs选项卡面板</h2><p>使用规则（重要）<br>在中部区域加入选项卡面板div添加属性class=”easyui-tabs”，添加属性data-options=”fit:true”，表示自动填充区域div，在子div中，添加性data-options=”closable:true,iconCls:’icon-add’”表示这个div是可关闭的,面板的图标是添加，面板的图标可以到引入的icon.css中找到。</p>
+<h1 id="Ztree树形插件–jQuery插件"><a href="#Ztree树形插件–jQuery插件" class="headerlink" title="Ztree树形插件–jQuery插件"></a>Ztree树形插件–jQuery插件</h1><p>我已经在官网上下载ztree插件，里面包括api<br>在页面导入资源文件</p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"></script></p>
+<p><link rel="stylesheet" href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css" type="text/css"><br>使用规则（重要）<br>第一种方式：使用标准json数据构成ztree（了解)</p>
+<pre>
+&ltul id="ztree1" class="ztree"&gt&lt/ul&gt
+$(function(){
+                            //当页面加载完成后动态创建菜单
+                            var setting={};//设置标准的ztree属性
+                            //构造json数据
+                            var zNodes=[//每个json数据代表一个节点
+                                                    {
+                                                        name:'系统管理'
+                                                    },
+                                                    {
+                                                        name:'用户管理',children:[{name:'用户添加'},{name:'用户修改'}]
+                                                    },
+                                                    {
+                                                        name:'权限管理'
+                                                    }
+                                                    ];
+                                    //创建ztree
+                                $.fn.zTree.init(
+                                    $("#ztree1"),
+                                    setting,
+                                    zNodes
+                                );
+
+                        });
+</pre>
+
+<p>第二种方式：使用简单json数组数据构成ztree(推荐)<br>在实际开发中我们的节点数据一般来自于系统的业务数据,可以发送ajax请求找action要数据，然后赋给treeNodes</p>
+<pre>
+&ltul id="ztree2" class="ztree"&gt&lt/ul&gt
+$(function(){
+                                //当页面加载完成后动态创建菜单
+                                var setting = {
+                                        data: {
+                                            simpleData: {
+                                                enable: true,//启用简单数组数据
+                                                idKey: "id",
+                                                pIdKey: "pId",
+                                                rootPId: 0
+                                            }
+                                        }
+                                    };
+                                    var treeNodes = [
+                                        {"id":1, "pId":0, "name":"test1"},
+                                        {"id":11, "pId":1, "name":"test11"},
+                                        {"id":12, "pId":1, "name":"test12"},
+                                        {"id":111, "pId":11, "name":"test111"}
+                                    ];
+                                    //创建ztree
+                                    $.fn.zTree.init(
+                                        $("#ztree2"),
+                                        setting,
+                                        treeNodes
+                                    );
+                            });
+
+</pre>
+
+
+
+
+<h2 id="给ztree绑定点击事件"><a href="#给ztree绑定点击事件" class="headerlink" title="给ztree绑定点击事件"></a>给ztree绑定点击事件</h2><pre>
+<code>
+function zTreeOnClick(event, treeId, treeNode) {
+    var page=treeNode.page;
+                    if(page!=undefined){//需要打开选项卡
+                                     //判断当前选项卡是否已经打开
+
+                                    var isExists= $("#tt").tabs("exists",treeNode.name);
+
+                                 if(isExists){
+                                     $("#tt").tabs("select",treeNode.name);
+                                 }else{
+                                     $("#tt").tabs("add",
+                                                {
+                                                 title: treeNode.name,
+                                                content: '&ltiframe src="'+page+'" width="100%" frameborder="0" height="100%"&gt&lt/iframe&gt',
+                                                closable: true,
+                                             iconCls: 'icon-search'
+                                                }  
+                                            );
+                                    }
+                                 }
+};
+var setting = {
+    callback: {
+        onClick: zTreeOnClick
+    }
+};
+</code>
+</pre>
+
+
+<h1 id="jQuery-EasyUI消息提示控件"><a href="#jQuery-EasyUI消息提示控件" class="headerlink" title="jQuery EasyUI消息提示控件"></a>jQuery EasyUI消息提示控件</h1><p>默认的提示框上面的按钮显示为ok，要想显示为中文，需要引入easyui下面locale下面的<br>easyui-lang-zh_CN.js</p>
+<h2 id="alert方法-消息提示框"><a href="#alert方法-消息提示框" class="headerlink" title="alert方法,消息提示框"></a>alert方法,消息提示框</h2><p>$.messager.alert(“标题”,”内容信息”,”question/error/info/warning”);</p>
+<h2 id="show方法-页面右下角出来提示信息"><a href="#show方法-页面右下角出来提示信息" class="headerlink" title="show方法,页面右下角出来提示信息"></a>show方法,页面右下角出来提示信息</h2><pre><code>window.setTimeout(function(){
+            $.messager.show({
+                title:&apos;欢迎信息&apos;,
+                msg:&apos;欢迎张三登录系统&apos;,
+                timeout:3000,
+                showType:&apos;slide&apos;
+            });
+        }, 3000);
+</code></pre><h2 id="confirm方法-确认框-如果点击确定，r的值为true"><a href="#confirm方法-确认框-如果点击确定，r的值为true" class="headerlink" title="confirm方法,确认框,如果点击确定，r的值为true"></a>confirm方法,确认框,如果点击确定，r的值为true</h2><pre><code>$.messager.confirm(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                        alert(r);
+                    });
+</code></pre><h2 id="prompt方法，跟confirm的作用差不多"><a href="#prompt方法，跟confirm的作用差不多" class="headerlink" title="prompt方法，跟confirm的作用差不多"></a>prompt方法，跟confirm的作用差不多</h2><pre><code>$.messager.prompt(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                                    alert(r);
+                                });
+</code></pre><h2 id="progress方法，进度条"><a href="#progress方法，进度条" class="headerlink" title="progress方法，进度条"></a>progress方法，进度条</h2><p>//打开进度条<br>$.messager.progress();<br>//关闭进度条<br>$.messager.progress(‘close’);<br><a id="more"></a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>bugeiqianshisb!!!</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipayCode.png" alt="burinicc Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/项目/" rel="tag"># 项目</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/复杂的sql/" rel="next" title="复杂的sql">
+                <i class="fa fa-chevron-left"></i> 复杂的sql
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/02/messx/" rel="prev" title="Mess x">
+                Mess x <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/02/二期改造项目笔记/"
+     data-title="二期改造项目1"
+     data-content=""
+     data-url="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/02/二期改造项目笔记/"
+           data-title="二期改造项目1" data-url="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/mikey.png"
+               alt="burinicc" />
+          <p class="site-author-name" itemprop="name">burinicc</p>
+          <p class="site-description motion-element" itemprop="description">仁爱兼同，疏者为戚</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/burinicc/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/unknown" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#struts提供的错误提示标签"><span class="nav-number">1.</span> <span class="nav-text">struts提供的错误提示标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery-EasyUI在页面使用的规则（具体配置查看API）"><span class="nav-number"></span> <span class="nav-text">jQuery EasyUI在页面使用的规则（具体配置查看API）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#layout页面布局"><span class="nav-number">1.</span> <span class="nav-text">layout页面布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#accordion折叠面板"><span class="nav-number">2.</span> <span class="nav-text">accordion折叠面板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tabs选项卡面板"><span class="nav-number">3.</span> <span class="nav-text">tabs选项卡面板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ztree树形插件–jQuery插件"><span class="nav-number"></span> <span class="nav-text">Ztree树形插件–jQuery插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#给ztree绑定点击事件"><span class="nav-number">1.</span> <span class="nav-text">给ztree绑定点击事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery-EasyUI消息提示控件"><span class="nav-number"></span> <span class="nav-text">jQuery EasyUI消息提示控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#alert方法-消息提示框"><span class="nav-number">1.</span> <span class="nav-text">alert方法,消息提示框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#show方法-页面右下角出来提示信息"><span class="nav-number">2.</span> <span class="nav-text">show方法,页面右下角出来提示信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#confirm方法-确认框-如果点击确定，r的值为true"><span class="nav-number">3.</span> <span class="nav-text">confirm方法,确认框,如果点击确定，r的值为true</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prompt方法，跟confirm的作用差不多"><span class="nav-number">4.</span> <span class="nav-text">prompt方法，跟confirm的作用差不多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#progress方法，进度条"><span class="nav-number">5.</span> <span class="nav-text">progress方法，进度条</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+		 
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">burinicc</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"burinicc"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+	
+</body>
+</html>
