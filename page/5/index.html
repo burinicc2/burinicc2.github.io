@@ -280,6 +280,172 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/向maven私服中导入jar包/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="burinicc">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/shrimp2.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Debug Genie">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/01/向maven私服中导入jar包/" itemprop="url">
+                  Maven
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T19:55:41+08:00">
+                2016-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/01/向maven私服中导入jar包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/向maven私服中导入jar包/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对于官网没有的jar包，maven向本地仓库导入jar包用如下命令<br>Java代码<br>mvn install:install-file<br>-DgroupId=包名<br>-DartifactId=项目名<br>-Dversion=版本号<br>-Dpackaging=jar<br>-Dfile=jar文件所在路径<br>以pinyin4j-2.5.0为例：<br>1、将pinyin4j-2.5.0.jar文件放在“D:\”目录下（该目录任意）<br>2、执行命令：<br>mvn install:install-file  -Dfile=D:\pinyin4j-2.5.0.jar -DgroupId=net.sourceforge.pinyin4j -DartifactId=pinyin4j -Dversion=2.5.0 -Dpackaging=jar  -DgeneratePom=true -DcreateChecksum=true<br>这样maven向本地仓库导入 pinyin4j-2.5.0.jar 包就成功了。<br>3.pom.xml文件配置：<br>Xml代码   </p>
+<pre>&ltdependency&gt
+      &ltgroupId&gtnet.sourceforge&lt/groupId&gt
+      &ltartifactId&gtpinyin4j&lt/artifactId&gt
+      &ltversion&gt2.5.0&lt/version&gt
+   &lt/dependency&gt</pre>
+
+
+<h1 id="什么是热部署"><a href="#什么是热部署" class="headerlink" title="   什么是热部署"></a>   什么是热部署</h1><p>  需求： 当程序出现新版本的时候，我们需要把新版本部署到正在运行的服务器上覆盖老版本。这种部署方式称为热部署。<br> 使用方式：<br> 第一步：配置服务器的用户名和密码<br> 第二步：启动服务器，访问根路径<br> 第三步：在pom.xml中添加服务器插件</p>
+ <pre>
+ <plugins>
+    <plugin>
+      <groupid>org.apache.tomcat.maven</groupid>
+      <artifactid>tomcat7-maven-plugin</artifactid>
+      <version>2.2</version>
+      <configuration>
+        <url>http://localhost:8081/manager/text</url>
+        <!--<path>/</path>  -->
+        <server>tomcat</server>
+        <username>tomcat</username>
+        <password>123</password>
+      </configuration>
+    </plugin>
+</plugins>
+</pre>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/朱日和介绍/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -599,152 +765,6 @@ http://example.asp?id=49 and 1=2
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://burinicc2.github.io/2016/12/01/tomcat-内存溢出三种解决方式/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="burinicc">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/shrimp2.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Debug Genie">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Debug Genie" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/tomcat-内存溢出三种解决方式/" itemprop="url">
-                  tomcat 内存溢出三种解决方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T11:04:33+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/01/tomcat-内存溢出三种解决方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/tomcat-内存溢出三种解决方式/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Tomcat内存溢出的原因<br>　　在生产环境中tomcat内存设置不好很容易出现内存溢出。造成内存溢出是不一样的，当然处理方式也不一样。<br>　　这里根据平时遇到的情况和相关资料进行一个总结。常见的一般会有下面三种情况：<br>　　1.OutOfMemoryError： Java heap space<br>　　2.OutOfMemoryError： PermGen space<br>　　3.OutOfMemoryError： unable to create new native thread.<br>　　Tomcat内存溢出解决方案<br>　　对于前两种情况，在应用本身没有内存泄露的情况下可以用设置tomcat jvm参数来解决。（-Xms -Xmx -XX：PermSize -XX：MaxPermSize）<br>　　最后一种可能需要调整操作系统和tomcat jvm参数同时调整才能达到目的。<br>　　第一种：是堆溢出。<br>　　原因分析：<br>JVM堆的设置是指java程序运行过程中JVM可以调配使用的内存空间的设置.JVM在启动的时候会自动设置Heap size的值，其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可进行设置。Heap size 的大小是Young Generation 和Tenured Generaion 之和。<br>在JVM中如果98％的时间是用于GC且可用的Heap size 不足2％的时候将抛出此异常信息。<br>Heap Size 最大不要超过可用物理内存的80％，一般的要将-Xms和-Xmx选项设置为相同，而-Xmn为1/4的-Xmx值。<br>　　没有内存泄露的情况下，调整-Xms -Xmx参数可以解决。<br>　　-Xms：初始堆大小<br>　　-Xmx：最大堆大小<br>　　但堆的大小受下面三方面影响：<br>　　1.相关操作系统的数据模型（32-bt还是64-bit）限制；（32位系统下，一般限制在1.5G~2G；我在2003 server 系统下（物理内存：4G和6G，jdk：1.6）测试 1612M，64位操作系统对内存无限制。）<br>　　2.系统的可用虚拟内存限制；<br>　　3.系统的可用物理内存限制。<br>　　堆的大小可以使用 java -Xmx<em>*</em>M version 命令来测试。支持的话会出现jdk的版本号，不支持会报错。<br>　　-Xms -Xmx一般配置成一样比较好比如set JAVA_OPTS= -Xms1024m -Xmx1024m<br>其初始空间(即-Xms)是物理内存的1/64，最大空间(-Xmx)是物理内存的1/4。可以利用JVM提供的-Xmn -Xms -Xmx等选项可<br>进行设置<br>实例，以下给出1G内存环境下java jvm 的参数设置参考：<br>JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>JAVA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:<br>NewSize=192m -XX:MaxNewSize=384m”<br>CATALINA_OPTS=”-server -Xms768m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=256m<br>-XX:NewSize=192m -XX:MaxNewSize=384m”<br>服务器为1G内存：JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:PermSize=64M -XX:MaxNewSize=256m -XX:MaxPermSize=128m -Djava.awt.headless=true “<br>服务器为64位、2G内存: JAVA_OPTS=’-server -Xms1024m -Xmx1536m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256m’<br>——————-解决方案1：—————————–<br>前提：是执行startup.bat启动tomcat的方式<br>Linux服务器：<br>在/usr/local/apache-tomcat-5.5.23/bin 目录下的catalina.sh<br>添加：JAVA_OPTS=’-Xms512m -Xmx1024m’<br>或者 JAVA_OPTS=”-server -Xms800m -Xmx800m -XX:MaxNewSize=256m”<br>或者 CATALINA_OPTS=”-server -Xms256m -Xmx300m”<br>Windows服务器：<br>在catalina.bat最前面加入<br>set JAVA_OPTS=-Xms128m -Xmx350m<br>或者set CATALINA_OPTS=-Xmx300M -Xms256M<br>（区别是一个直接设置jvm内存，另一个设置tomcat内存，CATALINA_OPTS似乎可以与JAVA_OPTS不加区别的使用）<br>基本参数说明<br>-client，-server<br>这两个参数用于设置虚拟机使用何种运行模式，一定要作为第一个参数，client模式启动比较快，但运行时性能和内存管理效率不如server模式，通常用于客户端应用程序。相反，server模式启动比client慢，但可获得更高的运行性能。<br>在windows上，缺省的虚拟机类型为client模式，如果要使用server模式，就需要在启动虚拟机时加-server参数，以获得更高性能，对服务器端应用，推荐采用server模式，尤其是多个CPU的系统。在Linux，Solaris上缺省采用server模式。<br>此外，在多cup下，建议用server模式<br>-Xms<size><br>设置虚拟机可用内存堆的初始大小，缺省单位为字节，该大小为1024的整数倍并且要大于1MB，可用k(K)或m(M)为单位来设置较大的内存数。初始堆大小为2MB。加“m”说明是MB，否则就是KB了。<br>例如：-Xms6400K，-Xms256M<br>-Xmx<size><br>设置虚拟机的最大可用大小，缺省单位为字节。该值必须为1024整数倍，并且要大于2MB。可用k(K)或m(M)为单位来设置较大的内存数。缺省堆最大值为64MB。<br>例如：-Xmx81920K，-Xmx80M<br>当应用程序申请了大内存运行时虚拟机抛出java.lang.OutOfMemoryError: Java heap space错误，就需要使用-Xmx设置较大的可用内存堆。<br>PermSize/MaxPermSize：定义Perm段的尺寸，即永久保存区域的大小，PermSize为JVM启动时初始化Perm的内存大小；MaxPermSize为最大可占用的Perm内存大小。在用户生产环境上一般将这两个值设为相同，以减少运行期间系统在内存申请上所花的开销。<br>如果用startup.bat启动tomcat,OK设置生效.够成功的分配200M内存.<br>——————-解决方案2：————————<br>前提：是执行startup.bat启动tomcat的方式<br>手动设置Heap size<br>Windows服务器：<br>修改TOMCAT_HOME/bin/catalina.bat，在“echo “Using CATALINA_BASE: $CATALINA_BASE””上面加入以下行：<br>Java代码<br>set JAVA_OPTS=%JAVA_OPTS% -server -Xms800m -Xmx800m -XX:MaxNewSize=256m<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/tomcat-内存溢出三种解决方式/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -790,7 +810,7 @@ http://example.asp?id=49 and 1=2
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -868,7 +888,7 @@ http://example.asp?id=49 and 1=2
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
